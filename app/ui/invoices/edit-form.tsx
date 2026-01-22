@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-import { updateInvoice } from '@/app/lib/actions';
+import { updateInvoice } from '@/app/lib/actions'; // 1. IMPORTANTE: Importar a action
 
 export default function EditInvoiceForm({
   invoice,
@@ -18,14 +18,13 @@ export default function EditInvoiceForm({
   invoice: InvoiceForm;
   customers: CustomerField[];
 }) {
+  // 2. IMPORTANTE: Criar a versão da action com o ID da fatura
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
 
   return (
+    // 3. IMPORTANTE: Adicionar a action no formulário
     <form action={updateInvoiceWithId}>
-      {/* O conteúdo interno do formulário é idêntico ao create-form, 
-          mas com defaultValue={invoice.xxx} nos campos. 
-          Se precisar do código completo deste arquivo me avise! */}
-       <div className="rounded-md bg-gray-50 p-4 md:p-6">
+      <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
           <label htmlFor="customer" className="mb-2 block text-sm font-medium">
