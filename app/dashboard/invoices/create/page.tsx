@@ -21,3 +21,9 @@ export default async function Page() {
     </main>
   );
 }
+
+import { Metadata } from 'next';
+ 
+export const metadata: Metadata = {
+  title: 'Create Invoice',
+};
