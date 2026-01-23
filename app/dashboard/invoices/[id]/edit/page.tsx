@@ -1,6 +1,7 @@
 import Form from '@/app/ui/invoices/edit-form';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
+import { notFound } from 'next/navigation'; // Importe notFound
  
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -9,9 +10,10 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     fetchInvoiceById(id),
     fetchCustomers(),
   ]);
-
+ 
+  // Se não encontrar a fatura, mostre a página 404
   if (!invoice) {
-      return <div>Invoice not found</div>;
+    notFound();
   }
  
   return (

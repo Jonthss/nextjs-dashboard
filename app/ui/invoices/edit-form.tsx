@@ -23,7 +23,9 @@ export default function EditInvoiceForm({
 
   return (
     // 3. IMPORTANTE: Adicionar a action no formulário
-    <form action={updateInvoiceWithId}>
+    <form action={async (formData) => {
+        await updateInvoiceWithId(formData);
+    }}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
